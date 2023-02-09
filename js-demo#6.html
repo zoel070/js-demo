@@ -7,17 +7,20 @@
 
 <body>
   <script>
-    let sum = 0;
-    for (let i = 1; i < 1001; i++) {
-      if (!(i % 2 == 0)) {
-        sum += i;
+    function odd(x) {
+      let sum = 0;
+      for (let i = 1; i < x + 1; i++) {
+        if (!(i % 2 == 0)) {
+          sum += i;
+        }
+        else {
+          continue;
+        }
       }
-      else {
-        continue;
-      }
+      return sum;
     }
-    console.log(sum);
-
+    const odd1000 = odd(1000);
+    console.log(odd1000);
   </script>
 </body>
 
