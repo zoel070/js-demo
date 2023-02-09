@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>wddemo</title>
+</head>
+
+<body>
+  <script>
+    const Series = [
+      {
+        name: 'Web',
+        courses: [
+          {
+            name: 'HTML',
+            lessons: [
+              { name: 'HTML Lesson 1' },
+              { name: 'HTML Lesson 2' }
+            ]
+          },
+          {
+            name: 'CSS',
+            lessons: [
+              { name: 'CSS Lesson 1' },
+              { name: 'CSS Lesson 2' }
+            ]
+          }
+        ]
+      },
+      {
+        name: 'PHP',
+        courses: [
+          {
+            name: 'Linux',
+            lessons: [
+              { name: 'Linux Lesson 1' }
+            ]
+          }
+        ]
+      }
+    ]
+
+
+    function getLessonCount(datas) {
+      // 计算每个系列下有多少门课
+      for (let i = 0; i < datas.length; i++) {
+        datas[i].count = 0;
+        for (let j = 0; j < datas[i].courses.length; j++) {
+          datas[i].count += datas[i].courses[j].lessons.length
+        }
+        delete datas[i].courses;
+      }
+      return datas;
+    }
+    const result = getLessonCount(Series);
+    console.log(result);
+// 期望结果
+// [{ name: 'Web', count: 4}, { name: 'PHP', count: 1}]
+  </script>
+</body>
+
+</html>

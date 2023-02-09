@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>wddemo</title>
+</head>
+
+<body>
+  <script>
+    function getQueryParams(obj) {
+      let num1 = obj.indexOf("=", 0) + 1;
+      let num2 = obj.indexOf("&", 0);
+      let num3 = obj.indexOf("1", 0);
+      let tmp = {};
+      tmp.hmsr = obj.slice(num1, num2);
+      tmp.timestamp = obj.slice(num3);
+      return tmp;
+    }
+
+    const url = "https://www.aitschool.com?hmsr=baidu&timestamp=1675748358355";
+    const result = getQueryParams(url);
+
+    console.log(result);
+
+// 预期 result 结果为
+// {
+//   hmsr: "baidu",
+//   timestamp: "1675748358355"
+// }
+  </script>
+</body>
+
+</html>

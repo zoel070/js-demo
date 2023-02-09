@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>wddemo</title>
+</head>
+
+<body>
+  <script>
+    function lotteryDraw(rangStart, rangEnd, num) {
+      let  arr = [];
+      for (let i = 0; i < num; i++) {
+        arr[i] = Math.floor(Math.random() * (rangEnd - rangStart) + rangStart);
+      }
+      return arr;
+    }
+
+    const result = lotteryDraw(2, 20, 5);
+    console.log(result);
+// 预期 result 结果为 [ 2、4、9、12、7 ] 2~20 的其中5个随机数
+  </script>
+</body>
+
+</html>
