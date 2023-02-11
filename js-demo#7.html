@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>wddemo</title>
+  <title>wddemo7</title>
 </head>
 
 <body>
@@ -40,22 +40,52 @@
       }
     ]
 
-
     function getLessonCount(datas) {
       // 计算每个系列下有多少门课
-      for (let i = 0; i < datas.length; i++) {
-        datas[i].count = 0;
-        for (let j = 0; j < datas[i].courses.length; j++) {
-          datas[i].count += datas[i].courses[j].lessons.length
-        }
-        delete datas[i].courses;
-      }
-      return datas;
+      let tmp = datas.map(item => {
+        return {
+          name: item.name,
+          count: item.courses.map(item2 => item2.lessons.length).reduce((pre, cur) => pre + cur)
+        };
+      });
+      return tmp;
     }
+
     const result = getLessonCount(Series);
     console.log(result);
 // 期望结果
 // [{ name: 'Web', count: 4}, { name: 'PHP', count: 1}]
+// 方法一：
+      // for (let i = 0; i < datas.length; i++) {
+      //   datas[i].count = 0;
+      //   for (let j = 0; j < datas[i].courses.length; j++) {
+      //     datas[i].count += datas[i].courses[j].lessons.length
+      //   }
+      //   delete datas[i].courses;//map()
+      // }
+// 方法二：
+      // datas.forEach(item => {
+      //   item.count = 0;
+      //   item.courses.forEach(item2 => {
+      //     item.count += item2.lessons.length;
+      //   })
+      //   delete item.courses;
+      // })
+      // return datas;
+//       方法三：
+//       return datas.map(item=>{
+//   let count =0;
+//   item.courses.forEach(item2=>{
+//     count +=item2.lessons.length;
+//   })
+//   return {
+//     name:item.name,
+//     count:count
+//   }
+// })
+//     }
+//     const result = getLessonCount(Series);
+//     console.log(result);
   </script>
 </body>
 

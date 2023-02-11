@@ -8,13 +8,20 @@
 <body>
   <script>
     function lotteryDraw(rangStart, rangEnd, num) {
-      let  arr = [];
-      for (let i = 0; i < num; i++) {
-        arr[i] = Math.floor(Math.random() * (rangEnd - rangStart) + rangStart);
+      let arr = [];
+      for (let i = 0; i < rangEnd - rangStart + 1; i++) {
+        arr[i] = rangStart + i;
       }
-      return arr;
+      let tmp = [];
+      for (let j = 0; j < num; j++) {
+        let m = Math.floor(Math.random() * (arr.length));
+        let ar1 = arr.splice(m, 1);
+        let num1 = ar1.join();
+        let num2 = Number(num1);
+        tmp[j] = num2;
+      }
+      return tmp;
     }
-
     const result = lotteryDraw(2, 20, 5);
     console.log(result);
 // 预期 result 结果为 [ 2、4、9、12、7 ] 2~20 的其中5个随机数
